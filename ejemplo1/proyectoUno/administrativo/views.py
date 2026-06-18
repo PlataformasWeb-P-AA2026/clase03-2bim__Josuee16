@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render
+from django.db.models import Count
 
 # importar las clases de models.py
 from administrativo.models import *
@@ -45,3 +46,15 @@ def listadoEstudiantesDos(request):
     'numero_estudiantes': len(estudiantes),
     'mis_numeros_telefonicos': mis_numeros_telefonicos}
     return render(request, 'listadoEstudiantesDos.html', informacion_template)
+
+def listadoEstudiantesTres(request):
+
+    estudiantes = Estudiante.objects.all()
+    mis_numeros_telefonicos = NumeroTelefonico.objects.all()
+    # en la variable tipo diccionario llamada informacion_template
+    # se agregará la información que estará disponible
+    # en el template
+    informacion_template = {'estudiantes': estudiantes,
+    'numero_estudiantes': len(estudiantes),
+    'mis_numeros_telefonicos': mis_numeros_telefonicos}
+    return render(request, 'listadoEstudiantesTres.html', informacion_template)
