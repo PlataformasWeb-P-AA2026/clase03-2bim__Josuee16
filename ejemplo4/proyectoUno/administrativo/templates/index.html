@@ -14,7 +14,19 @@
 
 {% endfor %} 
 </ul>
-
-<br />
 [<a href="{% url 'crear_estudiante' %}">agregar estudiante</a>]
+
+
+</ul>
+<h3>Listado de Paises</h3>
+  {% for p in paises %}
+  <li>{{ p.nombre_pais }} - [<a href="{% url 'obtener_pais' p.id %}">ver</a>] 
+  </li>
+  {% endfor %}
+
+
+</ul>
+[<a href="{% url 'crear_pais' %}">agregar país</a>]
+<br />
+
 
